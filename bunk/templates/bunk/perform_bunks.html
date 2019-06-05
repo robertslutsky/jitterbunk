@@ -1,6 +1,23 @@
 <h1> Perform Bunks </h1>
+<br>
+<br>
+<h2> bunker </h2>
+<form action="{% url 'perform_bunks' %}" method="post">
+{% csrf_token %}
 {% for choice in person_set %}
-    {{choice}}
+    <input type="radio" name="bunker" id="bunker{{choice.pk}}" value="{{ choice.id }}">
+    <label for="bunker{{choice.id}}">{{ choice.name }}</label>
     <br>
 {% endfor %}
-<h1> hi </h1>
+</ul>
+<br>
+<br>
+<h2> bunkee </h2>
+{% for choice in person_set %}
+    <input type="radio" name="bunkee" id="bunkee{{ choice.pk }}" value="{{ choice.id }}">
+    <label for="bunkee{{ choice.id }}">{{ choice.name }}</label>
+    <br>
+{% endfor %}
+<input type="submit" value="bunk" />
+</ul>
+</form>

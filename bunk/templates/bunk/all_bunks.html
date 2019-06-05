@@ -1,5 +1,7 @@
-<h1> All Bunks </h1>>
+<h1> All Bunks </h1>
 {% for choice in all_bunks %}
-    {{choice}}
+    <a href="/bunk/{{choice.pk}}"> {{choice.bunker.name}} </a> bunked
+    <a href="/bunk/{{choice.pk}}"> {{choice.bunkee.name}}
+    </a> {{choice.time}}
+    <br>
 {% endfor %}
-<h2> hi </h2>
