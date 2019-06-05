@@ -4,24 +4,28 @@ from django.db import models
 
 
 class Person(models.Model):
-    bunks_performed = models.IntegerField(default=0)
-    times_bunked_on = models.IntegerField(default=0)
     name = models.CharField(max_length=200)
 
-    def gotBunked(self):
-        times_bunked_on+=1
+    def times_bunkee(self):
+        return self.bunks_in.count()
 
-    def performedBunk(self):
-        bunks_performed+=1
+    def times_bunker(self):
+        return self.bunks_out.count()
+
+    # def performed_bunk(self):
+    #     self.bunks_performed += 1
+    #     self.save()
 
     def __str__(self):
-        return self.name+" performed "+str(self.bunks_performed)+" bunks and has been bunked "+str(self.times_bunked_on)
+        return self.name #+ " performed " + str(self.times_bunker) + " bunks and has been bunked "+ str(self.times_bunkee)
+
+    # def __repr__(self):
+    #     return "asdf"
 
 class Bunk(models.Model):
-    bunker_name = models.CharField(max_length=200)
-    bunkee_name = models.CharField(max_length=200)
-    #bunker = Person.objects.get(name=bunker_name)
-    #Person.objects.get(name=bunkee_name).gotBunked()
+    bunker = models.ForeignKey(Person, on_delete=models.CASCADE, related_name='bunks_out')
+    bunkee = models.ForeignKey(Person, on_delete=models.CASCADE, related_name='bunks_in')
     def __str__(self):
-        return self.bunker_name +" bunked "+self.bunkee_name
+        return self.bunker.name+" bunked "+self.bunkee.name
 # Create your models here.
+
