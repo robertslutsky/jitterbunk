@@ -25,7 +25,7 @@ class Person(models.Model):
 class Bunk(models.Model):
     bunker = models.ForeignKey(Person, on_delete=models.CASCADE, related_name='bunks_out')
     bunkee = models.ForeignKey(Person, on_delete=models.CASCADE, related_name='bunks_in')
-    time=timezone.now()
+    time = models.DateTimeField(auto_now_add=True)
     def __str__(self):
         return self.bunker.name+" bunked "+self.bunkee.name
 # Create your models here.

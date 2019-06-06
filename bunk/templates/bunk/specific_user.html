@@ -4,7 +4,7 @@
 <ul>
     {% for choice in user.bunks_out.all %}
         <li>
-            <a href="/bunk/{{choice.pk}}"> {{choice.bunkee.name}} </a> {{choice.time}}
+            <a href="/bunk/user{{choice.bunkee.pk}}"> {{choice.bunkee.name}} </a> {{choice.time}}
         </li>
     {% endfor %}
 </ul>
@@ -13,7 +13,7 @@
 <ul>
     {% for choice in user.bunks_in.all %}
         <li>
-            <a href="/bunk/{{choice.pk}}"> {{choice.bunker.name}} </a>
+            <a href="/bunk/user{{choice.bunker.pk}}"> {{choice.bunker.name}} </a>
             {{choice.time}}
         </li>
     {% endfor %}

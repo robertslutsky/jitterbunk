@@ -15,8 +15,11 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
-
+from django.views.generic.base import TemplateView
+from bunk import views
 urlpatterns = [
-    url(r'^bunk/', include('bunk.urls')),
     url(r'^admin/', admin.site.urls),
+    url(r'^bunk/', include('bunk.urls')),
+    url(r'^accounts/', include('django.contrib.auth.urls')),
+    url(r'^$', views.home, name='home'),
 ]

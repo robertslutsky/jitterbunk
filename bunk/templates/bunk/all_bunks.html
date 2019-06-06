@@ -1,7 +1,7 @@
 <h1> All Bunks </h1>
 {% for choice in all_bunks %}
-    <a href="/bunk/{{choice.pk}}"> {{choice.bunker.name}} </a> bunked
-    <a href="/bunk/{{choice.pk}}"> {{choice.bunkee.name}}
+    <a href="/bunk/user{{choice.bunker.pk}}"> {{choice.bunker.name}} </a> bunked
+    <a href="/bunk/user{{choice.bunkee.pk}}"> {{choice.bunkee.name}}
     </a> {{choice.time}}
     <br>
 {% endfor %}

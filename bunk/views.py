@@ -2,8 +2,10 @@ from django.http import HttpResponse, HttpResponseRedirect
 from .models import Bunk,Person
 from django.shortcuts import get_object_or_404, render
 from django.core.urlresolvers import reverse
-def options(request):
-    return render(request,'bunk/options.html')
+from django.utils import timezone
+
+def bunk_options(request):
+    return render(request,'bunk/bunk_options.html')
 
 def all_bunks(request):
     return render(request,'bunk/all_bunks.html',{'all_bunks':Bunk.objects.all()})
@@ -33,7 +35,11 @@ def perform_bunks(request):
 
 
 def specific_user(request, key):
-    user = get_object_or_404(Person, pk=1)
+    print(key)
+    print([i.pk for i in Person.objects.all()])
+    user = get_object_or_404(Person, pk=key)
     return render(request,'bunk/specific_user.html', {
         'user':user
     })
+def home(request):
+    return render(request,'home.html')
