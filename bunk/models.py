@@ -17,7 +17,7 @@ class Person(models.Model):
     #     self.save()
 
     def __str__(self):
-        return self.name + " performed " + str(self.times_bunker) + " bunks and has been bunked "+ str(self.times_bunkee)
+        return self.name + " performed " + str(self.times_bunker()) + " bunks and has been bunked "+ str(self.times_bunkee())
 
     # def __repr__(self):
     #     return "asdf"
