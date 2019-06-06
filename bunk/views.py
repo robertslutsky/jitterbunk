@@ -34,12 +34,11 @@ def perform_bunks(request):
         })
 
 
-def specific_user(request, key):
-    print(key)
-    print([i.pk for i in Person.objects.all()])
-    user = get_object_or_404(Person, pk=key)
+def specific_user(request, user_id):
+    user = get_object_or_404(Person, pk=user_id)
     return render(request,'bunk/specific_user.html', {
         'user':user
     })
+
 def home(request):
     return render(request,'home.html')

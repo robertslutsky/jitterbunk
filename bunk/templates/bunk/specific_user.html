@@ -1,20 +1,22 @@
 <h1> {{user.name}} has bunked {{user.times_bunker}} and has been bunked {{user.times_bunkee}}</h1>
-
-<h3> has bunked </h3>
-<ul>
-    {% for choice in user.bunks_out.all %}
-        <li>
-            <a href="/bunk/user{{choice.bunkee.pk}}"> {{choice.bunkee.name}} </a> {{choice.time}}
-        </li>
-    {% endfor %}
-</ul>
-
-<h3> has been bunked by </h3>
-<ul>
-    {% for choice in user.bunks_in.all %}
-        <li>
-            <a href="/bunk/user{{choice.bunker.pk}}"> {{choice.bunker.name}} </a>
-            {{choice.time}}
-        </li>
-    {% endfor %}
-</ul>
+{% if user.bunks_out.all.count != 0 %}
+    <h3> has bunked </h3>
+    <ul>
+        {% for choice in user.bunks_out.all %}
+            <li>
+                <a href="/bunk/user{{choice.bunkee.pk}}"> {{choice.bunkee.name}} </a> {{choice.time}}
+            </li>
+        {% endfor %}
+    </ul>
+{% endif %}
+{% if user.bunks_in.all.count != 0 %}
+    <h3> has been bunked by </h3>
+    <ul>
+        {% for choice in user.bunks_in.all %}
+            <li>
+                <a href="/bunk/user{{choice.bunker.pk}}"> {{choice.bunker.name}} </a>
+                {{choice.time}}
+            </li>
+        {% endfor %}
+    </ul>
+{% endif %}
